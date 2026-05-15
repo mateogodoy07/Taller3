@@ -8,6 +8,7 @@ import java.util.Scanner;
 public class Taller3 {
 
 	public static void main(String[] args) {
+		ArrayList<Mago> Magos = new ArrayList<>();
 		ArrayList<Hechizos> hechizos = new ArrayList<>();
 		
 		try {
@@ -19,14 +20,16 @@ public class Taller3 {
 				linea = lector.nextLine();
 				String[] partes = linea.split(";");
 				String NombreMago = partes[0];
+				String[] Hechizos = partes[1].split("//|");
 				for(int i = 0; i <partes.length;i++) {
 					if(partes[i]!=null) {
-						linea = lector.nextLine();
-						String partes2[] = linea.split("|");
-						String Hechizos = partes2[i+1];
+						Mago mago = new Mago(NombreMago,Hechizos);
+						Magos.add(mago);
+						//lectura mago
+						
 					}
 				}
-				
+							
 			}
 			
 		}catch(IOException e) {}
@@ -74,8 +77,10 @@ public class Taller3 {
 			}
 			
 		}catch(IOException e) {}
+		
 
 	}
+	
 	
 
 }
