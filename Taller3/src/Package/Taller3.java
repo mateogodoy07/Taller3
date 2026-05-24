@@ -70,6 +70,8 @@ public class Taller3 {
 					
 					Agua agua = new Agua(NombreHechizo,Tipo,Daño,CH,PA);
 					hechizos.add(agua);
+					
+					// falta partir el agua y planta con , en sus datos
 
 					
 				}
