@@ -20,10 +20,14 @@ public interface Interface {
 	 void MostrarPuntacionMagos(ArrayList<Mago> Magos,ArrayList<Hechizos>Hechizos);
 	 
 	 //Funciones 
-	 int CalculoPuntuacionHechizoFuego(String NombreHechizo, int DañoQuemadura, int DuracionQuemadura);
-	 int CalculoPuntuacionHechizoTierra(String NombreHechizo, int DañoTierra,int MejoraDefensa);
-	 int CalculoPuntuacionHechizoPlanta(String NombreHechizo, int DañoPlanta,int DuracionStun, int CantidadPlantas);
-	 int CalculoPuntuacionHechizoAgua(String NombreHechizo, int DañoAgua, int CantidadCurada, int PresionAgua);
+	 int CalculoPuntuacionHechizoFuego( int DañoQuemadura, int DuracionQuemadura);
+
+	 int CalculoPuntuacionHechizoTierra( int DañoTierra,int MejoraDefensa);
+
+	 int CalculoPuntuacionHechizoPlanta( int DañoPlanta,int DuracionStun, int CantidadPlantas);
+
+	 int CalculoPuntuacionHechizoAgua( int DañoAgua, int CantidadCurada, int PresionAgua);
+
 	 public void Menu (int opciones);
 
 }

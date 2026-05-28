@@ -47,35 +47,28 @@ public class Taller3 {
 				String NombreHechizo = partes[0];
 				String Tipo = partes[1];
 				int Daño = Integer.valueOf(partes[2]);
-				if(Tipo == "Fuego") {
+				if(Tipo.equals("Fuego")) {
 					int DQ = Integer.valueOf(partes[3]); //DQ = Daño Quemadura
 					Fuego fuego = new Fuego(NombreHechizo,Tipo,Daño,DQ);
 					hechizos.add(fuego);
 				}
-				if(Tipo == "Rocas") {
+				if(Tipo.equals("Tierra")) {
 					int MD = Integer.valueOf(partes[3]); // MD = Mejor Defensa
 					Roca roca = new Roca(NombreHechizo,Tipo,Daño,MD);
 					hechizos.add(roca);
 					
 				}
-				if(Tipo == "Planta") {
-					int DS = Integer.valueOf(partes[3]); // Duracion Stun
-					int CP = Integer.valueOf(partes[4]); // Cantidad Plantas
-					
-					Planta planta = new Planta(NombreHechizo,Tipo,Daño,DS,CP);
-					hechizos.add(planta);
-					
+				if(Tipo.equals("Planta")) {
+				    String[] partes2 = partes[3].split(",");
+				    int DS = Integer.valueOf(partes2[0]); // DS = Duracion Stun
+				    int CP = Integer.valueOf(partes2[1]); // CP = Cantidad Plantas
+				    hechizos.add(new Planta(NombreHechizo, Tipo, Daño, DS, CP));
 				}
-				if(Tipo == "Agua") {
-					int CH = Integer.valueOf(partes[3]); // CH =  Cantidad Heal
-					int PA = Integer.valueOf(partes[4]); // PA = Presion Agua
-					
-					Agua agua = new Agua(NombreHechizo,Tipo,Daño,CH,PA);
-					hechizos.add(agua);
-					
-					// falta partir el agua y planta con , en sus datos
-
-					
+				if(Tipo.equals("Agua")) {
+				    String[] partes2 = partes[3].split(","); 
+				    int CH = Integer.valueOf(partes2[0]); // CH = CantidadHeal
+				    int PA = Integer.valueOf(partes2[1]); // PA = Presion Agua
+				    hechizos.add(new Agua(NombreHechizo, Tipo, Daño, CH, PA));
 				}
 				
 			}
@@ -100,6 +93,7 @@ public class Taller3 {
 					System.out.println("5. Modificar Hechizo");
 					System.out.println("6. Eliminar Hechizo");
 					System.out.println("7. Salir");
+					System.out.println("");
 					System.out.print("Escoja su opcion: ");
 					opciones = Integer.valueOf(scanner.nextLine());	
 					if(opciones == 1) {
@@ -129,11 +123,14 @@ public class Taller3 {
 				do {
 					System.out.println("1. Top 10 Mejores Hechizos ");
 					System.out.println("2. Top 3 Mejores Magos");
-					System.out.println("3.Mostrar Todos Los Hechizos");
+					System.out.println("3. Mostrar Todos Los Hechizos");
 					System.out.println("4. Mostrar Todos Los Magos");
 					System.out.println("5. Mostrar Todos Los Hechizos Junto a Su Puntuacion");
 					System.out.println("6. Mostrar Todos Los Magos Junto A Su Puntuacion");
 					System.out.println("7. Salir");
+					System.out.println("");
+					System.out.print("Escoja su opcion: ");
+					opciones = Integer.valueOf(scanner.nextLine());	
 					
 					if(opciones ==1) {
 						
@@ -148,7 +145,7 @@ public class Taller3 {
 						
 					}
 					if(opciones == 5) {
-						
+						sistema.MostrarPuntacionHechizos(hechizos);
 					}
 					if(opciones == 6) {
 						

@@ -132,53 +132,87 @@ public class Implementacion_Interface implements Interface {
 		
 	}
 
-	@Override
+	
 	public void MostrarHechizos(ArrayList<Hechizos> Hechizos) {
-		// TODO Auto-generated method stub
+		for(int i = 0; i < Hechizos.size(); i++) {
+			System.out.println((i+1)+") "+Hechizos.get(i).getNombreHechizo()+"|"+Hechizos.get(i).getTipo());
+		}
 		
 	}
 
-	@Override
 	public void MostrarMagos(ArrayList<Mago> Magos) {
-		// TODO Auto-generated method stub
+		for(int i = 0; i < Magos.size(); i++) {
+			System.out.println((i+1)+") "+Magos.get(i).getNombre()+"|"+Magos.get(i).getHechizos());
+		}
 		
 	}
 
-	@Override
+	
 	public void MostrarPuntacionHechizos(ArrayList<Hechizos> Hechizos) {
-		//+* TODO Auto-generated method stub
+		for(int i = 0; i < Hechizos.size(); i ++) {
+			if(Hechizos.get(i).getTipo().equals("Fuego")) {
+				Fuego HechizoFuego = (Fuego) Hechizos.get(i);
+				int puntuacion =CalculoPuntuacionHechizoFuego(HechizoFuego.getDaño(),HechizoFuego.getDuracionQuemadura());
+				System.out.println((i+1)+") "+"Hechizo: " + HechizoFuego.getNombreHechizo()+"|" + " Puntuacion: " + puntuacion);			
+				}
+			if(Hechizos.get(i).getTipo().equals("Tierra")) {
+				Roca HechizoTierra = (Roca) Hechizos.get(i);
+				int puntuacion =CalculoPuntuacionHechizoTierra(HechizoTierra.getDaño(),HechizoTierra.getMejoraDefensa());
+				System.out.println((i+1)+") "+"Hechizo: " + HechizoTierra.getNombreHechizo()+"|" + " Puntuacion: " + puntuacion);			
+				}
+			if(Hechizos.get(i).getTipo().equals("Planta")) {
+				Planta HechizoPlanta = (Planta) Hechizos.get(i);
+				int puntuacion =CalculoPuntuacionHechizoPlanta(HechizoPlanta.getDaño(),HechizoPlanta.getDuracionStun(),HechizoPlanta.getCantPlantas());
+				System.out.println((i+1)+") "+"Hechizo: " + HechizoPlanta.getNombreHechizo()+"|" + " Puntuacion: " + puntuacion);			
+				}
+			if(Hechizos.get(i).getTipo().equals("Agua")) {
+				Agua HechizoAgua = (Agua) Hechizos.get(i);
+				int puntuacion =CalculoPuntuacionHechizoAgua(HechizoAgua.getDaño(),HechizoAgua.getCantidadHeal(),HechizoAgua.getPresionDelAgua());
+				System.out.println((i+1)+") "+"Hechizo: " + HechizoAgua.getNombreHechizo()+"|" + " Puntuacion: " + puntuacion);			
+				}
+			
+			
+		}
 		
 	}
 
 	@Override
 	public void MostrarPuntacionMagos(ArrayList<Mago> Magos, ArrayList<Hechizos> Hechizos) {
-		// TODO Auto-generated method stub
+		int contador = 0;
+		for( int i = 0; i < Magos.size();i++) {
+			// Completar
+		}
 		
 	}
 
 	@Override
-	public int CalculoPuntuacionHechizoFuego(String NombreHechizo, int DañoQuemadura, int DuracionQuemadura) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int CalculoPuntuacionHechizoFuego( int DañoQuemadura, int DuracionQuemadura) {
+		int fuego = 0;
+		fuego = DañoQuemadura*DuracionQuemadura;
+		return fuego;
+	}
+	
+
+	@Override
+	public int CalculoPuntuacionHechizoTierra( int DañoTierra, int MejoraDefensa) {
+		int tierra = 0;
+		tierra = (DañoTierra*MejoraDefensa)/2;
+		return tierra;
 	}
 
 	@Override
-	public int CalculoPuntuacionHechizoTierra(String NombreHechizo, int DañoTierra, int MejoraDefensa) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int CalculoPuntuacionHechizoPlanta(String NombreHechizo, int DañoPlanta, int DuracionStun,
+	public int CalculoPuntuacionHechizoPlanta( int DañoPlanta, int DuracionStun,
 			int CantidadPlantas) {
-		// TODO Auto-generated method stub
-		return 0;
+		int planta = 0;
+		planta = DañoPlanta+(DuracionStun*CantidadPlantas);
+		return planta;
 	}
 
 	@Override
-	public int CalculoPuntuacionHechizoAgua(String NombreHechizo, int DañoAgua, int CantidadCurada, int PresionAgua) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int CalculoPuntuacionHechizoAgua( int DañoAgua, int CantidadCurada, int PresionAgua) {
+		int agua = 0;
+		agua = (DañoAgua+CantidadCurada+PresionAgua)/2;
+		return agua;
 	}
 	public void Menu (int opciones) {
 		do {
