@@ -102,16 +102,66 @@ public class Implementacion_Interface implements Interface {
 		
 	}
 
-	@Override
-	public void AgregarHechizo(String Hechizo, String Archivo) {
-		// TODO Auto-generated method stub
+	
+	public void AgregarHechizo(String Hechizo, String Archivo,ArrayList<Hechizos>Hechizos) {
+		String NuevoHechizo;
+		System.out.print("Cual Sera el nomrbe de su nuevo hechizo: ");
+		String Nombre = scanner.nextLine();
+		System.out.print("De que tipo sera su hechizo(Fuego/Tierra/Planta/Agua): ");
+		String Tipo = scanner.nextLine();
+		System.out.print("Que daño tendra su nuevo hechizo(Debe ser un numero entero: )");
+		int Daño = Integer.valueOf(scanner.nextLine());
+		
+		if(Tipo.equals("Fuego")) {
+			System.out.print("Cuanto durara su quemadura de su hechizo fuego(Debe ser un numero enter): ");
+			int Quemadura = Integer.valueOf(scanner.nextLine());
+			Fuego nuevo = new NuevoHechizo();
+			nuevo = Nombre+";"+Tipo+";"+Daño+";"+Quemadura;
+			// Arreglar agregar hechizo
+		}
+		
 		
 	}
 
-	@Override
-	public void ModificarHechizo(String Hechizo, String Archivo) {
-		// TODO Auto-generated method stub
-		
+	
+	public void ModificarHechizo(String Hechizo, String Archivo,ArrayList<Hechizos>Hechizos) {
+		try {
+			BufferedWriter Magos2 = new BufferedWriter(new FileWriter(Archivo,false));
+			System.out.print("Cual hechizo quieres modificar: ");
+			String Decision = scanner.nextLine();
+			for(int i = 0; i < Hechizos.size();i++) {
+				
+				if(Hechizos.get(i).getNombreHechizo().equals(Decision)) {
+					Fuego hechizoFuego = (Fuego) Hechizos.get(i);
+					if(Hechizos.get(i).getTipo().equals("Fuego")) {
+						System.out.println("Que deseas modificar?");
+						System.out.println("1) Nombre");
+						System.out.println("2) Tipo");
+						System.out.println("3) Daño");
+						System.out.println("4) Duracion Quemadura");
+						
+						int opcion = Integer.valueOf(scanner.nextLine());
+						if(opcion == 1) {
+				            System.out.print("Nuevo nombre: ");
+				            hechizoFuego.setNombreHechizo(scanner.nextLine());
+				        }
+				        if(opcion == 2) {
+				            System.out.print("Nuevo tipo: ");
+				            hechizoFuego.setTipo(scanner.nextLine());
+				        }
+				        if(opcion == 3) {
+				            System.out.print("Nuevo daño: ");
+				            hechizoFuego.setDaño(Integer.valueOf(scanner.nextLine()));
+				        }
+				        if(opcion == 4) {
+				            System.out.print("Nueva duracion quemadura: ");
+				            hechizoFuego.setDuracionQuemadura(Integer.valueOf(scanner.nextLine()));
+				        }
+					}
+				}
+			}
+			
+		}catch(IOException e) {}
 	}
 
 	@Override
@@ -142,7 +192,16 @@ public class Implementacion_Interface implements Interface {
 
 	public void MostrarMagos(ArrayList<Mago> Magos) {
 		for(int i = 0; i < Magos.size(); i++) {
-			System.out.println((i+1)+") "+Magos.get(i).getNombre()+"|"+Magos.get(i).getHechizos());
+			String hechizos = "|";
+			for(int j = 0; j < Magos.get(j).getHechizos().size();j++) {
+				if(j<Magos.get(i).getHechizos().size()-1){
+					hechizos += Magos.get(i).getHechizos().get(j)+"|";
+				}
+				else {
+					hechizos += Magos.get(i).getHechizos().get(j);
+				}
+			}
+			System.out.println((i+1)+") "+Magos.get(i).getNombre()+"|"+hechizos);
 		}
 		
 	}
@@ -176,7 +235,7 @@ public class Implementacion_Interface implements Interface {
 		
 	}
 
-	@Override
+	
 	public void MostrarPuntacionMagos(ArrayList<Mago> Magos, ArrayList<Hechizos> Hechizos) {
 		int contador = 0;
 		for( int i = 0; i < Magos.size();i++) {

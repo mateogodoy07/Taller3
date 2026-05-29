@@ -14,27 +14,33 @@ public class Taller3 {
 		ArrayList<Hechizos> hechizos = new ArrayList<>();
 		
 		try {
-			File Mago = new File("Magos.txt");
-			Scanner lector = new Scanner(Mago);
-			String linea;
-			
-			while(lector.hasNextLine()) {
-				linea = lector.nextLine();
-				String[] partes = linea.split(";");
-				String NombreMago = partes[0];
-				String[] Hechizos = partes[1].split("//|");
-				for(int i = 0; i <partes.length;i++) {
-					if(partes[i]!=null) {
-						Mago mago = new Mago(NombreMago);
-						Magos.add(mago);
-						//lectura mago
-						
-					}
-				}
-							
-			}
-			
-		}catch(IOException e) {}
+		    File ArchivoMago = new File("Magos.txt");
+		    Scanner lector = new Scanner(ArchivoMago);
+		    String linea;
+
+		    while(lector.hasNextLine()) {
+		        linea = lector.nextLine();
+		        String[] partes = linea.split(";");
+		        String NombreMago = partes[0];
+		        String[] hechizosNombre = partes[1].split("\\|");
+
+		        Mago mago = new Mago(NombreMago); 
+
+		        for(int i = 0; i < hechizosNombre.length; i++) {
+		            for(int j = 0; j < hechizos.size(); j++) {
+		                if(hechizos.get(j).getNombreHechizo().equals(hechizosNombre[i])) {
+		                    mago.agregarHechizo(hechizos.get(j)); 
+		                    break; 
+		                }
+		            }
+		        }
+
+		        Magos.add(mago); 
+		        //Arreglar la lectura mago
+		    }
+		    
+
+		} catch(IOException e) {}
 		
 		try {
 			File Hechizos = new File("Hechizos.txt");
@@ -86,6 +92,7 @@ public class Taller3 {
 			opciones = Integer.valueOf(scanner.nextLine());	
 			if(opciones == 1) {
 				do {
+					System.out.println("");
 					System.out.println("1. Agregar Mago");
 					System.out.println("2. Modificar Mago");
 					System.out.println("3. Eliminar Mago");
@@ -121,6 +128,7 @@ public class Taller3 {
 			}
 			if(opciones == 2) {
 				do {
+					System.out.println("");
 					System.out.println("1. Top 10 Mejores Hechizos ");
 					System.out.println("2. Top 3 Mejores Magos");
 					System.out.println("3. Mostrar Todos Los Hechizos");
@@ -139,10 +147,10 @@ public class Taller3 {
 						
 					}
 					if(opciones == 3) {
-						
+						sistema.MostrarHechizos(hechizos);
 					}
 					if(opciones == 4) {
-						
+						sistema.MostrarMagos(Magos); 
 					}
 					if(opciones == 5) {
 						sistema.MostrarPuntacionHechizos(hechizos);

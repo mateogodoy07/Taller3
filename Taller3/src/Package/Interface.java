@@ -7,8 +7,8 @@ public interface Interface {
 	 void AgregarMago(String Archivo); // NM = Nuevo Mago , CH = Cantidad Hechizos
 	 void ModificarMago(String Archivo,ArrayList<Mago>Magos,ArrayList<Hechizos> hechizos);
 	 void EliminarMago(String Mago, String Archivo);
-	 void AgregarHechizo(String Hechizo, String Archivo);
-	 void ModificarHechizo(String Hechizo, String Archivo);
+	 void AgregarHechizo(String Hechizo, String Archivo,ArrayList<Hechizos>Hechizos);
+	 void ModificarHechizo(String Hechizo, String Archivo,ArrayList<Hechizos>Hechizos);
 	 void EliminarHechizo(String Hechizo, String Archivo);
 	
 	//Analista
