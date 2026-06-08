@@ -145,7 +145,6 @@ La puntuación total de un mago es la **suma de las puntuaciones de todos sus he
 - Si se ingresa un dato de tipo incorrecto, el programa lanzará una excepción y se cerrará.
 - Los archivos `Magos.txt` y `Hechizos.txt` deben existir antes de ejecutar el programa.
 - Los hechizos deben cargarse **antes** que los magos al iniciar el programa.
-- Los nombres con **tildes o caracteres especiales** (como `Vórtice Ígneo`) deben estar guardados en formato **UTF-8**.
 
 ---
 
