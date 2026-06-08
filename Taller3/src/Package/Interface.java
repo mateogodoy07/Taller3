@@ -6,10 +6,10 @@ public interface Interface {
 	//Administrador
 	 void AgregarMago(String Archivo); // NM = Nuevo Mago , CH = Cantidad Hechizos
 	 void ModificarMago(String Archivo,ArrayList<Mago>Magos,ArrayList<Hechizos> hechizos);
-	 void EliminarMago(String Mago, String Archivo);
-	 void AgregarHechizo(String Hechizo, String Archivo,ArrayList<Hechizos>Hechizos);
-	 void ModificarHechizo(String Hechizo, String Archivo,ArrayList<Hechizos>Hechizos);
-	 void EliminarHechizo(String Hechizo, String Archivo);
+	 void EliminarMago(ArrayList<Mago> MagoElegido,String Archivo);
+	 void AgregarHechizo(String Archivo,ArrayList<Hechizos>Hechizos);
+	 void ModificarHechizo(String Archivo,ArrayList<Hechizos>Hechizos);
+	 void EliminarHechizo(ArrayList<Hechizos>Hechizos, String Archivo);
 	
 	//Analista
 	 void Mejores10Hechizos(ArrayList<Hechizos>Hechizos); // Mostrar los 10 mejores
@@ -27,7 +27,8 @@ public interface Interface {
 	 int CalculoPuntuacionHechizoPlanta( int DañoPlanta,int DuracionStun, int CantidadPlantas);
 
 	 int CalculoPuntuacionHechizoAgua( int DañoAgua, int CantidadCurada, int PresionAgua);
+	 
+	 void AgregarEnArchivo(String dato, String Archivo);
 
-	 public void Menu (int opciones);
 
 }

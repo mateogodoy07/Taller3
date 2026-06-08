@@ -1,3 +1,9 @@
+//Integrante 1: Mateo Godoy Carrasco - 21924663-3 - mateogodoy07
+//Carrera: Ingenieria Civil Industrial
+//Link repositorio: https://github.com/mateogodoy07/Taller3
+
+
+
 package Package;
 
 import java.io.File;
@@ -13,34 +19,7 @@ public class Taller3 {
 		ArrayList<Mago> Magos = new ArrayList<>();
 		ArrayList<Hechizos> hechizos = new ArrayList<>();
 		
-		try {
-		    File ArchivoMago = new File("Magos.txt");
-		    Scanner lector = new Scanner(ArchivoMago);
-		    String linea;
-
-		    while(lector.hasNextLine()) {
-		        linea = lector.nextLine();
-		        String[] partes = linea.split(";");
-		        String NombreMago = partes[0];
-		        String[] hechizosNombre = partes[1].split("\\|");
-
-		        Mago mago = new Mago(NombreMago); 
-
-		        for(int i = 0; i < hechizosNombre.length; i++) {
-		            for(int j = 0; j < hechizos.size(); j++) {
-		                if(hechizos.get(j).getNombreHechizo().equals(hechizosNombre[i])) {
-		                    mago.agregarHechizo(hechizos.get(j)); 
-		                    break; 
-		                }
-		            }
-		        }
-
-		        Magos.add(mago); 
-		        //Arreglar la lectura mago
-		    }
-		    
-
-		} catch(IOException e) {}
+		
 		
 		try {
 			File Hechizos = new File("Hechizos.txt");
@@ -80,6 +59,33 @@ public class Taller3 {
 			}
 			
 		}catch(IOException e) {}
+		try {
+		    File ArchivoMago = new File("Magos.txt");
+		    Scanner lector = new Scanner(ArchivoMago);
+		    String linea;
+
+		    while(lector.hasNextLine()) {
+		        linea = lector.nextLine();
+		        String[] partes = linea.split(";");
+		        String NombreMago = partes[0];
+		        String[] hechizosNombre = partes[1].split("\\|");
+
+		        Mago mago = new Mago(NombreMago); 
+
+		        for(int i = 0; i < hechizosNombre.length; i++) {
+		            for(int j = 0; j < hechizos.size(); j++) {
+		                if(hechizos.get(j).getNombreHechizo().equals(hechizosNombre[i])) {
+		                    mago.agregarHechizo(hechizos.get(j)); 
+		                    break; 
+		                }
+		            }
+		        }
+
+		        Magos.add(mago); 
+		    }
+		    
+
+		} catch(IOException e) {}
 		int opciones = 0;
 		
 		do {
@@ -107,19 +113,20 @@ public class Taller3 {
 						sistema.AgregarMago("Magos.txt");
 					}
 					if(opciones == 2) {
-						
+						sistema.ModificarMago("Magos.txt", Magos, hechizos);		
 					}
 					if(opciones== 3) {
-						
+						sistema.EliminarMago(Magos, "Magos.txt");
 					}
 					if(opciones == 4) {
-						
+						sistema.AgregarHechizo("Hechizos.txt", hechizos);
 					}
 					if(opciones == 5) {
+						sistema.ModificarHechizo("Hechizos.txt", hechizos);
 						
 					}
 					if(opciones ==6) {
-						
+						sistema.EliminarHechizo(hechizos, "Hechizos.txt");
 					}
 					
 				}while(opciones !=7);
@@ -141,10 +148,10 @@ public class Taller3 {
 					opciones = Integer.valueOf(scanner.nextLine());	
 					
 					if(opciones ==1) {
-						
+						sistema.Mejores10Hechizos(hechizos);
 					}
 					if(opciones == 2) {
-						
+						sistema.Top3Magos(Magos, hechizos);
 					}
 					if(opciones == 3) {
 						sistema.MostrarHechizos(hechizos);
@@ -156,7 +163,7 @@ public class Taller3 {
 						sistema.MostrarPuntacionHechizos(hechizos);
 					}
 					if(opciones == 6) {
-						
+						sistema.MostrarPuntacionMagos(Magos, hechizos);
 					}
 					
 					
